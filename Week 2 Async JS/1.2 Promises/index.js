@@ -137,3 +137,22 @@ console.log("End of file");
  * * In seventh when it enter inside setTimeout it waits for 3s and  logged  "inside set timeout" and then call resolve function()
  * * In Eighth when resolve() is called then control goes to .then and it will invoke the callback function which will logged time is "done in last"
  */
+
+//Lets see an example of fetching api
+const url = "https://api.github.com/users/mj9135";
+const user = new Promise(async (resolve) => {
+  const startTime = new Date();
+  const user = await fetch(url);
+  const res = await user.json();
+  const endTime = new Date();
+  console.log(
+    "Time taken to fetch api details is " + (endTime - startTime) + " ms"
+  );
+  resolve(res);
+});
+function callback(res) {
+  console.log(res.name);
+  console.log(res.bio);
+  console.log(res.location);
+}
+user.then(callback);
