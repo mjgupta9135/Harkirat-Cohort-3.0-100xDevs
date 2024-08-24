@@ -1,0 +1,35 @@
+JavaScript Notes on Synchronous and Asynchronous Code Execution
+
+1.Normal Function in JavaScript:
+
+Ans:-A function can be created to perform specific tasks, such as summing two numbers or summing numbers from 1 to a given value n.
+Functions return values that can be stored in variables and then logged to the console.
+
+2.Synchronous Code:
+Ans:-Synchronous code is executed line by line in the order it is written.
+Each operation waits for the previous one to complete before moving on to the next one.
+This is typical for most basic operations in JavaScript.
+
+3.I/O Heavy Operations:
+Ans:-These refer to tasks that involve significant data transfer between the program and external systems or devices, like reading from or writing to a disk, network, or database.
+I/O operations usually take more time compared to in-memory computations and can cause delays in program execution.
+
+4.Synchronous I/O Operation:
+Ans:-Synchronous I/O operations, like reading a file using fs.readFileSync, block the execution of the program until the operation is complete. This means that subsequent code will not run until the file reading is finished.
+
+5.I/O Bound Tasks:
+Ans:-I/O bound tasks are limited by the system's input/output capabilities, spending most of their time waiting for I/O operations to complete.
+
+6.CPU Bound Tasks:
+Ans:-CPU bound tasks are limited by the processing power of the CPU. These tasks require significant computation and processing, making the CPU the performance bottleneck.
+
+7.Handling Tasks One by One vs. Concurrently:
+Ans:-Tasks can be handled one by one, where each task is completed before moving on to the next, or concurrently, where tasks are context-switched between to make better use of time, especially for I/O bound tasks.
+
+8.Asynchronous Code:
+Ans:-Asynchronous code in JavaScript does not block the execution of subsequent code. For example, using setTimeout schedules a function to be executed after a certain delay without pausing the execution of the following lines.
+     Callback functions are often used in asynchronous operations, which are executed automatically once the asynchronous task is complete.
+
+9.JavaScript Execution of Asynchronous Code:
+Ans:-JavaScript runs asynchronous code by scheduling tasks and
+     then moving on to execute the next line of code. When the scheduled task completes, the callback function is executed. This allows the program to handle tasks more efficiently, especially when dealing with I/O operations or timed events.
