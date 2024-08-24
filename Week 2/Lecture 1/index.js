@@ -46,14 +46,13 @@ console.log(content);
  * Lets try one another code
  */
 
-// const content1 = fs.readFileSync("a.txt", "utf-8");
-// console.log(content1);
+const c1 = fs.readFileSync("a.txt", "utf-8");
+console.log(c1);
 
-// const content2 = fs.readFileSync("b.txt", "utf-8");
-// console.log(content2);
+const c2 = fs.readFileSync("b.txt", "utf-8");
+console.log(c2);
 /**
  * * Above code is also synchronous code as  it waits for the previous operation to complete before moving on to the next one.
- *
  */
 
 /**
@@ -80,18 +79,18 @@ const content2 = fs.readFileSync("b.txt", "utf-8");
 console.log(content2);
 
 // one by one tasks will be performed in above code
-//Now asynchronous code
+// Now asynchronous code
 
-// function print(err, data) {
-//   console.log(data);
-// }
-// fs.readFile("a.txt", "utf-8", print);
+function print(err, data) {
+  console.log(data);
+}
+fs.readFile("a.txt", "utf-8", print);
 
-// fs.readFile("b.txt", "utf-8", print);
+fs.readFile("b.txt", "utf-8", print);
 
-// fs.readFile("b.txt", "utf-8", print);
+fs.readFile("b.txt", "utf-8", print);
 
-// console.log("Done all things");
+console.log("Done all things");
 /**
  * * Above code will  perform asynchronously
  * * Here we use the callback functions print in above code
@@ -114,11 +113,19 @@ console.log("hi");
 setTimeout(timeout, 4000);
 console.log("Duniya Khatam");
 /**
- * Execution of above code
+ ** Execution of above code
     The first line that gets executed is console.log("hi"). This will print "hi" to the console immediately.
     Next, setTimeout(timeout, 4000); is executed.
     setTimeout schedules the timeout function to run after 4000 milliseconds (4 seconds). However, it does not block the execution of the next line of code.
     Instead, it schedules the timeout function and immediately moves on to the next line.
     This line is executed right after scheduling the timeout function. It will immediately print "Duniya Khatam" to the console.
     After 4000 milliseconds (4 seconds), the timeout function is executed. The timeout function prints "Hi Guys, how are you" to the console.
+ */
+
+/**
+ * ! Execution of async js code
+ * * When js encounters any async code  it will not wait for the completion of that code. It parallely  executes the next line of code.
+ * * and when the async code executed then it will pushed to the callback queue.
+ * * After all CPU  bound tasks are completed then the callback queue will be executed.
+ * * Thats why in above code "hi" and "Duniya khatam" is printed before  "Hi Guys, how are you".
  */
