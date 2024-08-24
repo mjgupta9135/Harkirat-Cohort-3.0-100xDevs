@@ -135,7 +135,7 @@ console.log("End of file");
  * * In fifth it will logged "inside asyncfunc"
  * * In sixth it will start execute setTimeout and go to last line i.e "end of file"
  * * In seventh when it enter inside setTimeout it waits for 3s and  logged  "inside set timeout" and then call resolve function()
- * * In Eighth when resolve() is called then control goes to .then and it wil invoke the callback function which will logged time is "done in last"
+ * * In Eighth when resolve() is called then control goes to .then and it will invoke the callback function which will logged time is "done in last"
  */
 
 //Lets see an example of fetching api
