@@ -11,38 +11,38 @@
  * * 6. Getters and Setters:-Special Methods that allow you to define how properties are accessed and modified .
  */
 
-// class rectangle {
-//   constructor(width, height, color) {
-//     this.width = width;
-//     this.height = height;
-//     this.color = color;
-//   }
-//   area() {
-//     const area = this.width * this.height;
-//     console.log(area);
-//   }
-//   paint() {
-//     console.log("Painting with color " + this.color);
-//   }
-// }
-// const rect = new rectangle(2, 4, "red");
-// rect.area();
-// rect.paint();
+class rectangle {
+  constructor(width, height, color) {
+    this.width = width;
+    this.height = height;
+    this.color = color;
+  }
+  area() {
+    const area = this.width * this.height;
+    console.log(area);
+  }
+  paint() {
+    console.log("Painting with color " + this.color);
+  }
+}
+const rect = new rectangle(2, 4, "red");
+rect.area();
+rect.paint();
 
 /**
  *  Inbuilt classes in JS
  *  1. Date class
  *  2. Map Class  --> use to create key value pairs
  */
-// const date = new Date();
-// console.log(date.getMinutes());
-// console.log(date.getFullYear());
+const date = new Date();
+console.log(date.getMinutes());
+console.log(date.getFullYear());
 
-// const map = new Map();
-// map.set("name", "Mrityunjay");
-// map.set("Age", 21);
-// const firstname = map.get("name");
-// console.log(firstname);
+const map = new Map();
+map.set("name", "Mrityunjay");
+map.set("Age", 21);
+const firstname = map.get("name");
+console.log(firstname);
 
 /**
  * ! Promoise Class in JS:-
@@ -52,27 +52,27 @@
  */
 
 //Lets assume now that setTimeoutPromisified is global function like setTimeout function.
-// function setTimeoutPromisified(ms) {
-//   return new Promise((resolve) => setTimeout(resolve, ms)); //In this line an object of promise class in initiated.
-//   return p; //Promise return the object of promise class.
-// }
-// function callback() {
-//   console.log("3 seconds have passed");
-// }
-// setTimeoutPromisified(3000).then(callback);
+function setTimeoutPromisified(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms)); //In this line an object of promise class in initiated.
+  return p; //Promise return the object of promise class.
+}
+function callback() {
+  console.log("3 seconds have passed");
+}
+setTimeoutPromisified(3000).then(callback);
 
 //Promise is a syntactically better version of callback functions. and it resolve the problem of callback hell.
 
 // Promise class say that i will take one function as input i.e resolve and whatever the first argument of function.
 // whenever that first argument function will be called then the function under .then function will be called.
-// function demo(resolve) {
-//   setTimeout(resolve, 3000);
-// }
-// let p = new Promise(demo);
-// function callback() {
-//   console.log("Promise succeded");
-// }
-// p.then(callback);
+function demo(resolve) {
+  setTimeout(resolve, 3000);
+}
+let p = new Promise(demo);
+function callback() {
+  console.log("Promise succeded");
+}
+p.then(callback);
 
 /** t
  * todo: Here will see the explanation of above code
@@ -83,20 +83,20 @@
  */
 
 //promisified version of readfile function
-// const fs = require("fs");
-// function readTheFile(readFinalFile) {
-//   fs.readFile("a.txt", "utf-8", function (err, data) {
-//     readFinalFile(data);
-//   });
-// }
-// function readFileman() {
-//   return new Promise(readTheFile);
-// }
-// const res = readFileman();
-// function callback(data) {
-//   console.log(data);
-// }
-// res.then(callback);
+const fs = require("fs");
+function readTheFile(readFinalFile) {
+  fs.readFile("a.txt", "utf-8", function (err, data) {
+    readFinalFile(data);
+  });
+}
+function readFileman() {
+  return new Promise(readTheFile);
+}
+const res = readFileman();
+function callback(data) {
+  console.log(data);
+}
+res.then(callback);
 
 /**
  * Whenever you create a new promise it tells that give me function which perform async operations. When the async operations will be done then
