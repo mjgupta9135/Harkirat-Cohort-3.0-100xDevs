@@ -8,9 +8,9 @@ let ans = sum(4, 6);
 console.log(ans);
 
 //Function of sum from 1 to n
-function sum2(n) {
+function sum2(num) {
   let ans = 0;
-  for (let i = 1; i <= n; i++) {
+  for (let i = 1; i <= num; i++) {
     ans = ans + i;
   }
   return ans;
