@@ -6,19 +6,41 @@
  */
 
 function wait1(t) {
-
+  return new Promise(function (resolve, reject) {
+    setTimeout(resolve, t);
+  });
 }
 
 function wait2(t) {
-
+  return new Promise(function (resolve, reject) {
+    setTimeout(resolve, t);
+  });
 }
 
 function wait3(t) {
-
+  return new Promise(function (resolve, reject) {
+    setTimeout(resolve, t);
+  });
 }
-
+function setTimeoutPromisified(time) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, time);
+  });
+}
 function calculateTime(t1, t2, t3) {
-
+  const start = Date.now();
+  return setTimeoutPromisified(t1 * 1000)
+    .then(function () {
+      return setTimeoutPromisified(t2 * 1000);
+    })
+    .then(function () {
+      return setTimeoutPromisified(t3 * 10000);
+    })
+    .then(function () {
+      const end = Date.now();
+      const duration = end - start;
+      return duration;
+    });
 }
 
 module.exports = calculateTime;
