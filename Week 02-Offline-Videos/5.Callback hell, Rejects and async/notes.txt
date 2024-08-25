@@ -1,0 +1,17 @@
+
+Promisified setTimeout:-A promisified version of `setTimeout` allows you to delay actions using promises.
+                        This makes it easier to manage asynchronous operations in a more readable way.
+
+Callback Hell:-Callback hell occurs when multiple callbacks are nested within each other, creating deeply indented and
+               hard-to-read code. This situation is common in asynchronous JavaScript operations and makes code maintenance difficult.
+
+Promise Chaining:-Promise chaining is a technique where multiple asynchronous operations are performed one after the other. 
+                  Each operation waits for the previous one to complete before proceeding. 
+                  This method helps in avoiding callback hell and makes the code more readable and structured.
+
+Async/Await Syntax:-The `async` and `await` syntax in JavaScript allows asynchronous code to be written in a style that looks like synchronous code. 
+                    This makes the code easier to read and maintain, eliminating the need for chaining multiple `.then()` and `.catch()` methods.
+
+Using `Reject` in Promises:-In promises, `reject` is used for error handling. If an error occurs during the execution of a promise, 
+                            the `reject` function is called to reject the asynchronous operation and pass an error. Without using `reject`, 
+                            the user might always get a success message even when there is an error.
