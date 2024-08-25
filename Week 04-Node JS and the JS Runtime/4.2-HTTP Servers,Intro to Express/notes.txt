@@ -1,0 +1,45 @@
+
+1.Port:-In networking,ports are logical endpoints used by protocols to identify specific processes running on a computer or server.
+        They help direct network traffic to the correct application or service on a system.
+
+2.Methods:-HTTP methods are used to specify the type of action that the client wants to perform on a resource on the server.
+   
+Common methods
+    a. GET -  Retrieve data from a server. (Get my TODOS)
+    b. POST - Submit data to be processed by a server. (Create a TODO)
+    c. PUT - Update or create a resource on the server (Update my todo)
+    d. DELETE - Remove a resource from the server. (Delete my todo)
+ 
+3.Response:-The response represents what the server returns you `in response` to the request.
+    a. Plaintext data - Not used as often
+    b. HTML - If it is a website
+    c. JSON Data - If you want to fetch some data (user details, list of todos…)
+
+    JSON stands for JavaScript Object Notation*. It is a lightweight, text-based format used for data interchange.
+
+4.Status codes:-HTTP status codes are three-digit numbers returned by a server to indicate the outcome of a client’s request. They provide information about the status of the request and the server's response.
+
+    a.200 series (Success)
+         -200 OK: The request was successful, and the server returned the requested resource.
+        -204 No Content: The request was successful, but there is no content to send in the response
+
+    b.300 series (Redirection)
+        -301 Moved Permanently**: The requested resource has been moved to a new URL permanently. The client should use the new URL provided in the response.
+        -304 Not Modified**: The resource has not been modified since the last request. The client can use the cached version.
+
+    c.400 series (Client Error)
+        - 400 Bad Request: The server could not understand the request due to invalid syntax.
+        - 401 Unauthorized: The request requires user authentication. The client must provide credentials.
+        - 403 Forbidden: The server understood the request but refuses to authorize it.
+        - 404 Not Found: The requested resource could not be found on the server.
+
+    d.500 series (Server Error)
+        - 500 Internal Server Error: The server encountered an unexpected condition that prevented it from fulfilling the request.
+        - 502 Bad Gateway: The server received an invalid response from an upstream server while acting as a gateway or proxy.    
+
+5.Body:-In HTTP communications, the body (or payload) refers to the part of an HTTP message that contains the actual data being sent to the server.
+        It is usually JSON data that is transferred to the server.
+        For example - 
+        {
+        todo: "Go to the gym"
+        }
