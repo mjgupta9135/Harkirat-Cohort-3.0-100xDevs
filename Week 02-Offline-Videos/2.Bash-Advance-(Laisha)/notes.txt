@@ -1,0 +1,7 @@
+1. ls:- List all the files of Directory
+   * ls -l:-is used to list files and directories in the current directory (or a specified directory) with detailed information.
+   * ls -l newDir:- lists the contents of the directory newDir with detailed information.
+   * ls -R newDir:- This command lists the contents of the newDir directory and all its subdirectories recursively.
+                   *This means it will display all files and directories within newDir, as well as the contents of any subdirectories, down to the deepest level.
+   *ls -t newDir:-This command lists the contents of the newDir directory, sorting the files and directories bymodificationtime,
+                * with the most recently modified items appearing first.              
