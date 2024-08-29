@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div class="wrapper">
+    <div class="wrapper ">
         <h1 class="head">ToDo Application</h1>
         <div class="hero">
             <input class="input-box" type="text" placeholder="Enter Your TODO">
@@ -23,6 +23,17 @@
             </div>
         </div>
     </div>
+    <div class="update updateShow">
+        <h1>Update Todo</h1>
+        <div class="update-input"><label for="Title">Title</label>
+            <input class="input-update" type="text">
+        </div>
+
+        <div class="Btn-update">
+            <button class="update-btn1">Update Task</button>
+            <button class="cancel-btn">Cancel</button>
+        </div>
+    </div>
 </body>
 
 <script>
@@ -30,7 +41,7 @@
     function add() {
         let noHead = document.querySelector(".noHead");
         noHead.classList.add("noHeadInvisible");
-
+        let wrap = document.querySelector(".wrapper");
         let todo_style = document.createElement("div");
         todo_style.classList.add("todo-style");
         todo_style.classList.add("todo" + count);
@@ -43,6 +54,7 @@
         check.classList.add("check");
 
         let task = document.createElement("h1");
+        task.classList.add("task" + count);
         todo_head.appendChild(check);
         todo_head.appendChild(task);
         todo_style.appendChild(todo_head);
@@ -55,6 +67,7 @@
         icon1.classList.add("fa-solid", "fa-trash-can", "icon");
         btnDel.appendChild(icon1);
         let btnUpdate = document.createElement("button");
+        btnUpdate.classList.add("update_btn");
         let icon2 = document.createElement("i");
         icon2.classList.add("fa-solid", "fa-pen-to-square", "icon");
         btnUpdate.appendChild(icon2);
@@ -66,14 +79,33 @@
         inputData.value = "";
         btnDel.addEventListener('click', function () {
             parent.removeChild(todo_style);
-            if (parent.contains(noHead)) {
+            count--;
+
+            if (count === 0) {
                 noHead.classList.remove("noHeadInvisible");
             }
         });
 
-        count++;
 
+        let input_update = document.querySelector(".input-update");
+        let task_value = document.querySelector(".task" + count);
+        input_update.value = task_value.innerHTML;
+        console.log(task_value);
+        let update_box = document.querySelector(".update");
+        btnUpdate.addEventListener('click', function () {
+            update_box.classList.remove("updateShow");
+            wrap.classList.add("filter");
+        });
+
+        let cancel_btn = document.querySelector(".cancel-btn");
+        cancel_btn.addEventListener('click', function () {
+            update_box.classList.add("updateShow");
+            wrap.classList.remove("filter");
+        });
+        count++;
     }
+
+
 </script>
 
 </html>

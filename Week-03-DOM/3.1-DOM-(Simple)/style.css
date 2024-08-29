@@ -8,7 +8,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 10px;
+  width: 100vw;
+  height: 100vh;
 }
 .head {
   text-align: center;
@@ -45,6 +47,7 @@
   width: 600px;
   border-radius: 10px;
   background-color: #ecedf6;
+  margin-top: 20px;
 }
 .todo-style {
   margin: 10px;
@@ -85,4 +88,75 @@
 }
 .noHeadInvisible {
   display: none;
+}
+.update {
+  position: absolute;
+  margin-top: -550px;
+  margin-left: 550px;
+  width: 350px;
+  height: 250px;
+  border: 1px solid black;
+  background-color: #ecedf6;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.update h1 {
+  font-size: 25px;
+  color: #001529;
+  font-weight: 600;
+}
+.update-input {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  padding-top: 10px;
+  color: #001529;
+}
+.update label {
+  color: #001529;
+}
+.update-input input {
+  height: 35px;
+  font-size: 16px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+}
+.Btn-update {
+  margin-top: 55px;
+  display: flex;
+  gap: 30px;
+  width: full;
+}
+.Btn-update button {
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.update-btn1 {
+  background-color: #646ff0;
+  color: white;
+  border: none;
+  width: 120px;
+  font-weight: 600;
+}
+.cancel-btn {
+  background-color: #cccdde;
+  color: #666681;
+  border: none;
+  font-weight: 600;
+  width: 80px;
+}
+.blur {
+  filter: blur(5px);
+  transition: filter 0.3s ease;
+}
+.updateShow {
+  display: none;
+}
+.filter {
+  filter: blur(5px);
 }
