@@ -1,0 +1,23 @@
+There are five most imp fetching methods of DOM Elements.
+1.  querySelector():- It is a method in JavaScript used to select the first element within the document that matches a specified CSS selector or group of selectors.
+                      It returns the first matching element or null if no elements match the selector.
+2.  querySelectorAll():- It is a method in JavaScript that returns a static NodeList (which is similar to an array)
+                         of all elements within the document that match a specified CSS selector or group of selectors.
+3.  getElementById()
+
+4.  getElementByClass()
+
+
+Updating Elements:-
+
+1. innerHTML():-
+
+Deleting Elements:
+For Deleting an element fetch the parent of that element then delete that child from that.
+
+removeChild():- It is used to remove child from DOM.
+
+
+Adding elements:-
+
+For Adding an element 

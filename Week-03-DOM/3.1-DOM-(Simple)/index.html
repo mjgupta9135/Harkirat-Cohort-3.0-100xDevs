@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO List</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/dfcc07d8ba.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1 class="head">ToDo Application</h1>
+        <div class="hero">
+            <input class="input-box" type="text" placeholder="Enter Your TODO">
+            <button class="addBtn" onclick="add()">Add</button>
+        </div>
+
+        <div id="content">
+            <div class="noHead">
+                <h1>No Todos</h1>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    let count = 0;
+    function add() {
+        let noHead = document.querySelector(".noHead");
+        noHead.classList.add("noHeadInvisible");
+
+        let todo_style = document.createElement("div");
+        todo_style.classList.add("todo-style");
+        todo_style.classList.add("todo" + count);
+
+        let todo_head = document.createElement("div");
+        todo_head.classList.add("todo-head");
+
+        let check = document.createElement("input");
+        check.type = "checkbox";
+        check.classList.add("check");
+
+        let task = document.createElement("h1");
+        todo_head.appendChild(check);
+        todo_head.appendChild(task);
+        todo_style.appendChild(todo_head);
+        let parent = document.getElementById("content");
+        parent.appendChild(todo_style);
+        let todo_btn = document.createElement("div");
+        todo_btn.classList.add("todo-btn");
+        let btnDel = document.createElement("button");
+        let icon1 = document.createElement("i");
+        icon1.classList.add("fa-solid", "fa-trash-can", "icon");
+        btnDel.appendChild(icon1);
+        let btnUpdate = document.createElement("button");
+        let icon2 = document.createElement("i");
+        icon2.classList.add("fa-solid", "fa-pen-to-square", "icon");
+        btnUpdate.appendChild(icon2);
+        todo_btn.appendChild(btnDel);
+        todo_btn.appendChild(btnUpdate);
+        todo_style.appendChild(todo_btn);
+        let inputData = document.querySelector("input");
+        task.innerHTML = inputData.value;
+        inputData.value = "";
+        btnDel.addEventListener('click', function () {
+            parent.removeChild(todo_style);
+            if (parent.contains(noHead)) {
+                noHead.classList.remove("noHeadInvisible");
+            }
+        });
+
+        count++;
+
+    }
+</script>
+
+</html>
