@@ -1,8 +1,10 @@
 * {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif; /* Apply Poppins font globally */
 }
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -10,47 +12,49 @@
   justify-content: center;
   gap: 10px;
   width: 100vw;
-  height: 100vh;
 }
+
 .head {
   text-align: center;
-  margin: 50px;
+  margin: 50px 0;
 }
+
 .hero {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .input-box {
   width: 250px;
   height: 40px;
   padding: 10px;
   font-size: 16px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-radius: 10px 0 0 10px;
 }
+
 .addBtn {
   height: 40px;
   width: 60px;
   font-size: 16px;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-radius: 0 10px 10px 0;
   cursor: pointer;
 }
+
 #content {
   padding: 20px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  margin: auto 0px;
   width: 600px;
-  border-radius: 10px;
-  background-color: #ecedf6;
   margin-top: 20px;
+  background-color: #ecedf6;
+  border-radius: 10px;
 }
+
 .todo-style {
-  margin: 10px;
+  margin: 10px 0;
   padding: 10px 15px;
   display: flex;
   justify-content: space-between;
@@ -58,105 +62,116 @@
   background-color: white;
   width: 100%;
 }
+
 .todo-head {
   display: flex;
-  font-size: 13px;
+  align-items: center;
   gap: 10px;
+  font-size: 13px;
   padding: 4px 15px;
   border-radius: 5px;
 }
+
 .check {
   zoom: 1.5;
 }
+
 .todo-btn {
   display: flex;
-  justify-content: space-between;
   gap: 10px;
   font-size: 36px;
-
-  padding: 10px;
 }
+
 .todo-btn button {
   border: none;
 }
+
 .icon {
   font-size: 20px;
-  border: none;
   background-color: #ecedf6;
   padding: 7px;
   cursor: pointer;
 }
+
 .noHeadInvisible {
   display: none;
 }
+
 .update {
-  position: absolute;
-  margin-top: -550px;
-  margin-left: 550px;
+  position: fixed; /* Use fixed positioning to keep it centered relative to the viewport */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Offset by 50% of its own size to achieve centering */
   width: 350px;
   height: 250px;
-  border: 1px solid black;
-  background-color: #ecedf6;
   padding: 20px;
+  background-color: #ecedf6;
+  border: 1px solid black;
   display: flex;
   flex-direction: column;
+  border: none;
+  border-radius: 5px;
 }
+
 .update h1 {
   font-size: 25px;
   color: #001529;
   font-weight: 600;
 }
+
 .update-input {
+  margin-top: 25px;
   display: flex;
   flex-direction: column;
-  margin-top: 15px;
-  padding-top: 10px;
   color: #001529;
 }
-.update label {
-  color: #001529;
-}
+
 .update-input input {
   height: 35px;
-  font-size: 16px;
   margin-top: 10px;
+  padding: 10px;
+  font-size: 16px;
   border: none;
   border-radius: 5px;
-  padding: 10px;
 }
+
 .Btn-update {
   margin-top: 55px;
   display: flex;
   gap: 30px;
-  width: full;
 }
+
 .Btn-update button {
   padding: 10px;
   font-size: 15px;
   border-radius: 5px;
+  font-weight: 600;
   cursor: pointer;
 }
+
 .update-btn1 {
   background-color: #646ff0;
   color: white;
   border: none;
   width: 120px;
-  font-weight: 600;
 }
+
 .cancel-btn {
   background-color: #cccdde;
   color: #666681;
   border: none;
-  font-weight: 600;
   width: 80px;
 }
-.blur {
+
+.blur,
+.filter {
   filter: blur(5px);
   transition: filter 0.3s ease;
 }
+
 .updateShow {
   display: none;
-}
-.filter {
-  filter: blur(5px);
 }

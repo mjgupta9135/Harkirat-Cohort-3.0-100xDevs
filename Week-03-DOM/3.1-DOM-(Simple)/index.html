@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TODO List</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+
     <script src="https://kit.fontawesome.com/dfcc07d8ba.js" crossorigin="anonymous"></script>
 </head>
 
@@ -38,10 +40,13 @@
 
 <script>
     let count = 0;
+    let taskToUpdate = null; // Store reference to the task to be updated
+
     function add() {
         let noHead = document.querySelector(".noHead");
         noHead.classList.add("noHeadInvisible");
         let wrap = document.querySelector(".wrapper");
+
         let todo_style = document.createElement("div");
         todo_style.classList.add("todo-style");
         todo_style.classList.add("todo" + count);
@@ -54,29 +59,34 @@
         check.classList.add("check");
 
         let task = document.createElement("h1");
-        task.classList.add("task" + count);
+        task.classList.add("task" + count); // Assign a unique class to the task element
         todo_head.appendChild(check);
         todo_head.appendChild(task);
         todo_style.appendChild(todo_head);
         let parent = document.getElementById("content");
         parent.appendChild(todo_style);
+
         let todo_btn = document.createElement("div");
         todo_btn.classList.add("todo-btn");
         let btnDel = document.createElement("button");
         let icon1 = document.createElement("i");
         icon1.classList.add("fa-solid", "fa-trash-can", "icon");
         btnDel.appendChild(icon1);
+
         let btnUpdate = document.createElement("button");
         btnUpdate.classList.add("update_btn");
         let icon2 = document.createElement("i");
         icon2.classList.add("fa-solid", "fa-pen-to-square", "icon");
         btnUpdate.appendChild(icon2);
+
         todo_btn.appendChild(btnDel);
         todo_btn.appendChild(btnUpdate);
         todo_style.appendChild(todo_btn);
         let inputData = document.querySelector("input");
         task.innerHTML = inputData.value;
         inputData.value = "";
+
+        // Delete Button Event Listener
         btnDel.addEventListener('click', function () {
             parent.removeChild(todo_style);
             count--;
@@ -86,25 +96,39 @@
             }
         });
 
-
-        let input_update = document.querySelector(".input-update");
-        let task_value = document.querySelector(".task" + count);
-        input_update.value = task_value.innerHTML;
-        console.log(task_value);
-        let update_box = document.querySelector(".update");
+        // Update Button Event Listener
         btnUpdate.addEventListener('click', function () {
+            taskToUpdate = task;
+            let input_update = document.querySelector(".input-update");
+            input_update.value = taskToUpdate.innerHTML;
+            let update_box = document.querySelector(".update");
             update_box.classList.remove("updateShow");
             wrap.classList.add("filter");
         });
 
-        let cancel_btn = document.querySelector(".cancel-btn");
-        cancel_btn.addEventListener('click', function () {
-            update_box.classList.add("updateShow");
-            wrap.classList.remove("filter");
-        });
         count++;
     }
 
+
+    let update_btn1 = document.querySelector(".update-btn1");
+    update_btn1.addEventListener('click', function () {
+        if (taskToUpdate) {
+            let input_update = document.querySelector(".input-update");
+            taskToUpdate.innerHTML = input_update.value; // Update the specific task element
+            let update_box = document.querySelector(".update");
+            update_box.classList.add("updateShow");
+            let wrap = document.querySelector(".wrapper");
+            wrap.classList.remove("filter");
+        }
+    });
+
+    let cancel_btn = document.querySelector(".cancel-btn");
+    cancel_btn.addEventListener('click', function () {
+        let update_box = document.querySelector(".update");
+        update_box.classList.add("updateShow");
+        let wrap = document.querySelector(".wrapper");
+        wrap.classList.remove("filter");
+    });
 
 </script>
 
