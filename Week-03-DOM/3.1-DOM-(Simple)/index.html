@@ -16,9 +16,8 @@
         <h1 class="head">ToDo Application</h1>
         <div class="hero">
             <input class="input-box" type="text" placeholder="Enter Your TODO">
-            <button class="addBtn" onclick="add()">Add</button>
+            <button class="addBtn" onclick="addTodo()">Add</button>
         </div>
-
         <div id="content">
             <div class="noHead">
                 <h1>No Todos</h1>
@@ -38,7 +37,7 @@
     </div>
 </body>
 
-<script>
+<script src="index.js">
     let count = 0;
     let taskToUpdate = null; // Store reference to the task to be updated
 

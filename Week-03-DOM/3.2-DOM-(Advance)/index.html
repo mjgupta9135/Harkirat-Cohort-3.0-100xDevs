@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text">
+    <button onclick="addTodo()">Add TODO</button>
+    <script>
+        let count = 0;
+        let todos = []
+        function addTodo() {
+            todos.push(document.querySelector("input").value);
+            render();
+            document.querySelector("input").value = "";
+        }
+        function deleteTodo(key) {
+
+        }
+        function render() {
+            let newDiv = document.createElement("div");
+            let text = document.createElement("h1");
+            text.innerHTML = todos[count];
+            text.classList.add(count);
+            let del = document.createElement("button");
+            del.innerHTML = "Delete";
+            newDiv.appendChild(text);
+            newDiv.appendChild(del);
+            document.querySelector("body").appendChild(newDiv); count++;
+        }
+    </script>
+</body>
+
+</html>
