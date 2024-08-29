@@ -43,6 +43,9 @@
     let taskToUpdate = null; // Store reference to the task to be updated
 
     function add() {
+        let current_Date = new Date();
+        let current_time = current_Date.getHours() + ":" + current_Date.getMinutes() + ":" + current_Date.getSeconds();
+        let nowDate = current_Date.getDate() + "/" + current_Date.getMonth() + "/" + current_Date.getFullYear();
         let noHead = document.querySelector(".noHead");
         noHead.classList.add("noHeadInvisible");
         let wrap = document.querySelector(".wrapper");
@@ -50,19 +53,41 @@
         let todo_style = document.createElement("div");
         todo_style.classList.add("todo-style");
         todo_style.classList.add("todo" + count);
-
+        let date_time = document.createElement("p");
+        date_time.classList.add("time")
+        date_time.innerHTML = current_time + " " + nowDate;
         let todo_head = document.createElement("div");
         todo_head.classList.add("todo-head");
 
         let check = document.createElement("input");
         check.type = "checkbox";
         check.classList.add("check");
-
+        check.addEventListener('change', function () {
+            let textSpan = this.nextElementSibling.querySelector('h1');
+            console.log(textSpan);
+            if (check.checked) {
+                if (!textSpan.querySelector('del')) {
+                    const delTag = document.createElement('del');
+                    delTag.textContent = textSpan.textContent;
+                    textSpan.textContent = '';
+                    textSpan.appendChild(delTag);
+                }
+            } else {
+                const delTag = textSpan.querySelector('del');
+                if (delTag) {
+                    textSpan.textContent = delTag.textContent;
+                }
+            }
+        });
         let task = document.createElement("h1");
-        task.classList.add("task" + count); // Assign a unique class to the task element
+        let extra_div = document.createElement("div");
+        extra_div.classList.add("extra");
+        task.classList.add("task" + count);
         todo_head.appendChild(check);
-        todo_head.appendChild(task);
+        todo_head.appendChild(extra_div);
+        extra_div.appendChild(task);
         todo_style.appendChild(todo_head);
+        extra_div.appendChild(date_time);
         let parent = document.getElementById("content");
         parent.appendChild(todo_style);
 
@@ -86,7 +111,7 @@
         task.innerHTML = inputData.value;
         inputData.value = "";
 
-        // Delete Button Event Listener
+
         btnDel.addEventListener('click', function () {
             parent.removeChild(todo_style);
             count--;
