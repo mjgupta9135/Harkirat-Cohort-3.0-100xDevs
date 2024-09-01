@@ -2,19 +2,19 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 
-app.use(express.json());
-app.use(cors());
+app.use(express.json()); // Middleware to parse JSON bodies
+app.use(cors()); // Enable CORS for all routes
 
-app.get("/", function (req, res) {
-  res.sendFile(__dirname + "/index.html");
-});
 app.post("/sum", function (req, res) {
-  const a = parseInt(req.body.a);
-  const b = parseInt(req.body.b);
+  const a = parseInt(req.body.a); // Parse 'a' from request body
+  const b = parseInt(req.body.b); // Parse 'b' from request body
+  const ans = a + b; // Calculate sum
 
   res.json({
-    answer: a + b,
+    answer: ans, // Respond with the sum as JSON
   });
 });
 
-app.listen(3000);
+app.listen(3000, () => {
+  console.log("Server is running on port 3000");
+});

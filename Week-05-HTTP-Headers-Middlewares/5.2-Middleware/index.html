@@ -6,14 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.6/axios.min.js"></script>
     <script>
-        function sendRequest() {
+        async function sendRequest() {
             const a = document.getElementById("a").value;
             const b = document.getElementById("b").value;
 
-            axios.post('http://localhost:3000/sum', {
+            const response = await axios.post('http://localhost:3000/sum', {
                 a: a,
                 b: b
-            })
+            });
+            const data = response.data;
+            const c = document.getElementById("c");
+            c.value = data.answer;
         }
     </script>
 </head>
@@ -22,6 +25,7 @@
     <input id="a" type="text" placeholder="First value">
     <input id="b" type="text" placeholder="Second value">
     <button onclick="sendRequest()">Find sum</button>
+    <input id="c" type="text" placeholder="Answer">
 </body>
 
 </html>
