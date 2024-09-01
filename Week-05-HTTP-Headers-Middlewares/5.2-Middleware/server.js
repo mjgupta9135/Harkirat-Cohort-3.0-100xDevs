@@ -37,7 +37,24 @@ app.get("/admin", print, function (req, res) {
     message: "Total no of requests are:- " + requestCount,
   });
 });
+app.use(express.json()); //express.json is also a function and it returns also a function so thats why i have to call it.
+
+app.post("/body", function (req, res) {
+  const a = req.body.a;
+  const b = req.body.b;
+  res.json({
+    sum: a + b,
+  });
+});
 
 app.listen(3000, () => {
   console.log("App is listening on port no 3000");
 });
+
+/**
+ * ! CROSS ORIGIN RESOURCE SHARING
+ * * CORS (Cross-Origin Resource Sharing) ek security feature hai jo browsers mein hota hai.
+ * * Iska kaam yeh hota hai ki jab koi web page dusre ORIGIN se kuch data ya resource mangta hai,
+ * * Then browser check karta hai ki kya yeh allowed hai ya nahi. Yeh important hai, kyunki yeh web applications ko malicious requests se protect karta hai.
+ *
+ */
