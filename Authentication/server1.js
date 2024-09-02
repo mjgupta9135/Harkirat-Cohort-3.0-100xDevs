@@ -22,20 +22,40 @@ app.post("/signup", async function (req, res) {
         msg: "User already exists",
       });
     }
+    const user = new User({
+      name: username,
+      email: email,
+      password: password,
+    });
+    user.save();
+    res.json({
+      user,
+    });
   } catch (error) {
     res.status(500).json({
       msg: "Server error",
     });
   }
+});
 
-  const user = new User({
-    name: username,
-    email: email,
-    password: password,
-  });
-  user.save();
-  res.json({
-    user,
-  });
+app.post("/signin", async function (req, res) {
+  const email = req.body.email;
+  const password = req.body.password;
+  try {
+    const existingUser = await User.findOne({ email: email });
+    if (!existingUser) {
+      return res.status(409).json({
+        msg: "User dosen't exits please signup first",
+      });
+    }
+    const userDetails = await User.find({ email: email, password: password });
+    res.json({
+      userDetails,
+    });
+  } catch (error) {
+    res.status(500).json({
+      msg: "Server error",
+    });
+  }
 });
 app.listen(3000);
