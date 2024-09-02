@@ -29,6 +29,7 @@
  */
 
 const { json } = require("body-parser");
+const { ALL } = require("dns");
 const express = require("express");
 const jwt = require("jsonwebtoken");
 const jwtPassword = "123456";
@@ -82,6 +83,15 @@ app.get("/users", function (req, res) {
   try {
     const decoded = jwt.verify(token, jwtPassword);
     const username = decoded.username;
+    res.json({
+      users: ALL_USERS.filter((value) => {
+        if (value.username === username) {
+          return false;
+        } else {
+          return true;
+        }
+      }),
+    });
   } catch (err) {
     return res.status(403).json({
       msg: "invalid token",
