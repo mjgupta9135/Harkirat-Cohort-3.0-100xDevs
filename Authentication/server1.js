@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const z = require("zod");
 mongoose.connect(
   "mongodb+srv://mrityunjaywebdev:JokoxIDq2U89CLRx@cluster0.nh76z.mongodb.net/"
 );
@@ -8,13 +9,28 @@ const User = mongoose.model("Users", {
   email: String,
   password: String,
 });
+
+const signupSchema = z.object({
+  username: z.string(),
+  email: z.string().email(),
+  password: z.string().min(8, {
+    required_error: "Min 8 digits should be in password",
+    invalid_type_error: "password must be string",
+  }),
+});
 const app = express();
 app.use(express.json());
 app.post("/signup", async function (req, res) {
+  const use = req.body;
   const username = req.body.username;
   const email = req.body.email;
   const password = req.body.password;
-
+  const response = signupSchema.safeParse(use);
+  if (!response.success) {
+    return res.json({
+      message: response.error.issues[0].message,
+    });
+  }
   try {
     const existingUser = await User.findOne({ name: username });
     if (existingUser) {
