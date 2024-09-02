@@ -1,9 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const { url } = require("./private");
 const z = require("zod");
-mongoose.connect(
-  "mongodb+srv://mrityunjaywebdev:JokoxIDq2U89CLRx@cluster0.nh76z.mongodb.net/"
-);
+mongoose.connect(url);
 const User = mongoose.model("Users", {
   name: String,
   email: String,
