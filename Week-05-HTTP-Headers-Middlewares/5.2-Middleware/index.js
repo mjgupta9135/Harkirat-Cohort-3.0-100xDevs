@@ -16,5 +16,5 @@ app.post("/sum", function (req, res) {
 });
 
 app.listen(3000, () => {
-  console.log("Server is lostening on port 3000");
+  console.log("Server is lostening on port 3001");
 });
