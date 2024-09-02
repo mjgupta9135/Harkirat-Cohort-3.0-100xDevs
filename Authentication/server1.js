@@ -54,6 +54,38 @@ app.post("/signin", async function (req, res) {
     });
   } catch (error) {
     res.status(500).json({
+      msg: error,
+    });
+  }
+});
+
+app.post("/update", async function (req, res) {
+  const email = req.body.email;
+  const password = req.body.password;
+  const updatedName = req.body.updatedName;
+  try {
+    const existingUser = await User.findOne({
+      email: email,
+      password: password,
+    });
+    if (!existingUser) {
+      return res.status(409).json({
+        msg: "User dosen't exits please signup first",
+      });
+    }
+    if (existingUser.name === updatedName) {
+      return res.json({
+        msg: "Given name is similar as Existed",
+      });
+    }
+    existingUser.name = updatedName;
+    await existingUser.save();
+    res.json({
+      msg: "Details Updated",
+      existingUser,
+    });
+  } catch (error) {
+    res.status(500).json({
       msg: "Server error",
     });
   }
