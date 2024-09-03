@@ -9,9 +9,16 @@ const value = {
 };
 
 //generate jwt tokens
-const token = jwt.sign(value, "secret"); //this long string token is act as checkbook everyone can decode it without secret code.
-console.log(token);
-
+try {
+  const token = jwt.verify(
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVC.eyJuYW1lIjoiTXJpdHl1bmpheSIsImFjY291bnROdW1iZXIiOiIyMzQyNDMiLCJpYXQiOjE3MjUzODQ4MDd9.dx8fI01WhKX2XYdslcQHjB4W0ExoUuGriF8hVr3WHro",
+    "secret"
+  ); //this long string token is act as checkbook everyone can decode it without secret code.
+  console.log(token);
+  console.log(typeof token);
+} catch (e) {
+  console.log("err");
+}
 //If any person decode our jwt tokens and make a jwt tokens for same data but at the time of verify it will not be verify by server bcz both secret code is different.
 //Anyone can see the content of jwt but only the server can verify it.
 
