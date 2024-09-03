@@ -4,20 +4,19 @@ const { url } = require("./private");
 const z = require("zod");
 const { signinSchema, signupSchema, updateSchema } = require("./schema");
 mongoose.connect(url);
+const app = express();
+app.use(express.json());
 const User = mongoose.model("Users", {
   name: String,
   email: String,
   password: String,
 });
 
-const app = express();
-app.use(express.json());
+//Signup routes
 app.post("/signup", async function (req, res) {
-  const use = req.body;
-  const username = req.body.username;
-  const email = req.body.email;
-  const password = req.body.password;
-  const response = signupSchema.safeParse(use);
+  const body = req.body;
+  const { username, email, password } = body;
+  const response = signupSchema.safeParse(body);
   if (!response.success) {
     return res.json({
       message: response.error.issues[0].message,
@@ -49,6 +48,8 @@ app.post("/signup", async function (req, res) {
   }
 });
 
+//Signin routes
+
 app.post("/signin", async function (req, res) {
   const body = req.body;
   const email = req.body.email;
@@ -77,6 +78,7 @@ app.post("/signin", async function (req, res) {
   }
 });
 
+//update routes
 app.post("/update", async function (req, res) {
   const body = req.body;
   const email = req.body.email;
@@ -115,4 +117,4 @@ app.post("/update", async function (req, res) {
     });
   }
 });
-app.listen(3000);
+app.listen(3000, () => console.log("App is listening on port 3000"));
