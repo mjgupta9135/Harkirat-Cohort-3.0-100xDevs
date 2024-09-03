@@ -28,8 +28,6 @@
  *
  */
 
-const { json } = require("body-parser");
-const { ALL } = require("dns");
 const express = require("express");
 const jwt = require("jsonwebtoken");
 const jwtPassword = "123456";
@@ -73,7 +71,7 @@ app.post("/signin", function (req, res) {
       msg: "User doesn't exist in our memory",
     });
   }
-  var token = jwt.sign({ username: username }, jwtPassword);
+  let token = jwt.sign({ username: username }, jwtPassword);
   return res.json({
     token,
   });
@@ -85,11 +83,7 @@ app.get("/users", function (req, res) {
     const username = decoded.username;
     res.json({
       users: ALL_USERS.filter((value) => {
-        if (value.username === username) {
-          return false;
-        } else {
-          return true;
-        }
+        return value.username !== username;
       }),
     });
   } catch (err) {
