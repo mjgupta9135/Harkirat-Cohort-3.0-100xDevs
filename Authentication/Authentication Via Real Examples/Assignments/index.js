@@ -43,7 +43,7 @@ function verifyJwt(token) {
     return false;
   }
 }
-verifyJwt();
+
 
 /**
  * Decodes a JWT to reveal its payload without verifying its authenticity.

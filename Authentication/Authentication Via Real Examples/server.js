@@ -7,15 +7,13 @@ const value = {
   name: "Mrityunjay",
   accountNumber: "234243",
 };
-
+ const token =
+   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVC.eyJuYW1lIjoiTXJpdHl1bmpheSIsImFjY291bnROdW1iZXIiOiIyMzQyNDMiLCJpYXQiOjE3MjUzODQ4MDd9.dx8fI01WhKX2XYdslcQHjB4W0ExoUuGriF8hVr3WHro";
 //generate jwt tokens
 try {
-  const token = jwt.verify(
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVC.eyJuYW1lIjoiTXJpdHl1bmpheSIsImFjY291bnROdW1iZXIiOiIyMzQyNDMiLCJpYXQiOjE3MjUzODQ4MDd9.dx8fI01WhKX2XYdslcQHjB4W0ExoUuGriF8hVr3WHro",
-    "secret"
-  ); //this long string token is act as checkbook everyone can decode it without secret code.
-  console.log(token);
-  console.log(typeof token);
+  const decoded = jwt.verify(token, "secret"); //this long string token is act as checkbook everyone can decode it without secret code.
+  console.log(decoded);
+
 } catch (e) {
   console.log("err");
 }
