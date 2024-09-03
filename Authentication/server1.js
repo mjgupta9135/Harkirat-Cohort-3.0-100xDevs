@@ -9,13 +9,51 @@ const User = mongoose.model("Users", {
   password: String,
 });
 
+const signinSchema = z.object({
+  email: z
+    .string({ invalid_type_error: "Email Must be an string" })
+    .email("Invalid e-mail format"),
+
+  password: z
+    .string({ invalid_type_error: "Password must be a string" })
+    .min(8, {
+      message: "Password at least contain 8 character",
+    }),
+});
+
 const signupSchema = z.object({
-  username: z.string(),
-  email: z.string().email(),
-  password: z.string().min(8, {
-    required_error: "Min 8 digits should be in password",
-    invalid_type_error: "password must be string",
-  }),
+  username: z
+    .string({
+      invalid_type_error: "Name must be a string",
+    })
+    .min(5, { message: "Must be 5 or more characters long" }),
+
+  email: z
+    .string({ invalid_type_error: "Email Must be an string" })
+    .email("Invalid e-mail format"),
+
+  password: z
+    .string({ invalid_type_error: "Password must be a string" })
+    .min(8, {
+      message: "Password at least contain 8 character",
+    }),
+});
+
+const updateSchema = z.object({
+  email: z
+    .string({ invalid_type_error: "Email Must be an string" })
+    .email("Invalid e-mail format"),
+
+  password: z
+    .string({ invalid_type_error: "Password must be a string" })
+    .min(8, {
+      message: "Password at least contain 8 character",
+    }),
+  updatedName: z
+    .string({
+      invalid_type_error: "Name must be a string",
+    })
+    .min(5, { message: "Must be 5 or more characters long" }),
 });
 const app = express();
 app.use(express.json());
@@ -31,7 +69,10 @@ app.post("/signup", async function (req, res) {
     });
   }
   try {
-    const existingUser = await User.findOne({ name: username });
+    const existingUser = await User.findOne({
+      email: email,
+      password: password,
+    });
     if (existingUser) {
       return res.status(409).json({
         msg: "User already exists",
@@ -54,8 +95,15 @@ app.post("/signup", async function (req, res) {
 });
 
 app.post("/signin", async function (req, res) {
+  const body = req.body;
   const email = req.body.email;
   const password = req.body.password;
+  const response = signinSchema.safeParse(body);
+  if (!response.success) {
+    return res.json({
+      message: response.error.issues[0].message,
+    });
+  }
   try {
     const existingUser = await User.findOne({ email: email });
     if (!existingUser) {
@@ -75,9 +123,16 @@ app.post("/signin", async function (req, res) {
 });
 
 app.post("/update", async function (req, res) {
+  const body = req.body;
   const email = req.body.email;
   const password = req.body.password;
   const updatedName = req.body.updatedName;
+  const response = updateSchema.safeParse(body);
+  if (!response.success) {
+    return res.json({
+      message: response.error.issues[0].message,
+    });
+  }
   try {
     const existingUser = await User.findOne({
       email: email,
