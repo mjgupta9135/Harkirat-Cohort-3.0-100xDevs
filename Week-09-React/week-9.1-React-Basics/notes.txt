@@ -1,0 +1,7 @@
+1.Why do we need react ?
+-> For static website we dont need react but in case of dynamic website we need react.
+
+React is just an easier way to write normal HTML/CSS/JS.
+Its a new syntax that under hood gets converted into HTML/CSS/JS.
+
+
