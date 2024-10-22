@@ -4,4 +4,10 @@
 React is just an easier way to write normal HTML/CSS/JS.
 Its a new syntax that under hood gets converted into HTML/CSS/JS.
 
+* Some React Jargon
+1. State     --> An object that represents the current state of the app. It represents the dynamic things in our app.(Like Variable)
+2. Component --> How a DOM element should render,given a state.It is a re-usable dynamic and HTML snippit that changes given a state.
 
+
+JSX: -> JSX stands for Javascript XML. It is a syntax extension for Javascript,most commonly used with React.
+     -> JSX allows you to write HTML-Like code directly within  Javascript. This makes it easier t create and manage the user interface in React application.
